@@ -12,7 +12,8 @@ module.exports = {
     'no-extra-boolean-cast': 0,
     'no-console': 1,
     'vue/max-attributes-per-line': 'off',
-    'vue/singleline-html-element-content-newline': 'off'
+    'vue/singleline-html-element-content-newline': 'off',
+    'space-before-function-paren': 'off'
   },
   overrides: [
     {
