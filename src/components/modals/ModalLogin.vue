@@ -14,47 +14,20 @@
 
   <div class="mt-16">
     <form @submit.prevent="handleSubmit">
-      <label class="block">
-        <span class="text-lg font-medium text-gray-800">
-          E-mail
-        </span>
-        <input
-          v-model="state.email.value"
-          type="email"
-          :class="{
-            'border-brand-danger': !!state.email.errorMessage
-          }"
-          class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
-          placeholder="john.doe@gmail.com"
-        />
-        <span
-          v-if="!!state.email.errorMessage"
-          class="block font-medium text-brand-danger"
-        >
-          {{ state.email.errorMessage }}
-        </span>
-      </label>
-
-      <label class="block mt-9">
-        <span class="text-lg font-medium text-gray-800">
-          Senha
-        </span>
-        <input
-          v-model="state.password.value"
-          type="password"
-          :class="{
-            'border-brand-danger': !!state.password.errorMessage
-          }"
-          class="block w-full px-4 py-3 mt-1 text-lg bg-gray-100 border-2 border-transparent rounded"
-          placeholder="password@1"
-        />
-        <span
-          v-if="!!state.password.errorMessage"
-          class="block font-medium text-brand-danger"
-        >
-          {{ state.password.errorMessage }}
-        </span>
-      </label>
+      <base-input
+        v-model="state.email.value"
+        type="email"
+        label="E-mail"
+        placeholder="john.doe@gmail.com"
+        :errorMessage="state.email.errorMessage"
+      />
+      <base-input
+        v-model="state.password.value"
+        type="password"
+        label="Senha"
+        placeholder="*****"
+        :errorMessage="state.password.errorMessage"
+      />
 
       <button
         :disabled="state.isLoading"
@@ -67,13 +40,21 @@
           text-2xl font-bold text-white
           rounded-full bg-brand-main focus:outline-none transition-all duration-150"
       >
-        Entrar
+        <icon
+          v-if="state.isLoading"
+          name="loading"
+          class="animate-spin"
+        />
+        <span v-else>Entrar</span>
       </button>
     </form>
   </div>
 </template>
 
 <script>
+import Icon from '../Icon.vue'
+import BaseInput from '../inputs/BaseInput.vue'
+
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useField } from 'vee-validate'
@@ -86,6 +67,10 @@ import {
 } from '../../utils/validators'
 
 export default {
+  components: {
+    Icon,
+    BaseInput
+  },
   setup() {
     const router = useRouter()
     const modal = useModal()

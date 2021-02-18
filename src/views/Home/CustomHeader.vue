@@ -44,6 +44,7 @@
           <div>
             <button
               class="px-6 py-2 mt-10 font-bold bg-white rounded-full text-brand-main focus:outline-none"
+              @click="() => emit('create-account')"
             >
               Crie uma conta grátis
             </button>
