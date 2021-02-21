@@ -45,12 +45,7 @@ export default {
     },
     errorMessage: {
       type: String,
-      required: true
-    }
-  },
-  methods: {
-    updateInput() {
-      this.$emit('input', this.value)
+      required: false
     }
   }
 }

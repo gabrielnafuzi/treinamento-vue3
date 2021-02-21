@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import Icon from '../Icon.vue'
+import Icon from '../icons/Icon.vue'
 import BaseInput from '../inputs/BaseInput.vue'
 
 import { reactive } from 'vue'
